@@ -21,7 +21,6 @@ def s_zero(x: ArrayLike) -> Array:
     # TODO: handle JAX bug
     return -expi(-x)
 
-# @partial(jit, static_argnums=(0,))
 def s_half(x):
     """Solution when s = 1/2."""
 
