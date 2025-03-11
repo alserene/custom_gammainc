@@ -1,0 +1,22 @@
+[project]
+name = "gammainc"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "alserene",email = "aserene@swin.edu.au"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jax (>=0.5.2,<0.6.0)",
+    "pytest (>=8.3.5,<9.0.0)",
+    "sympy (>=1.13.3,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "gammainc", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
