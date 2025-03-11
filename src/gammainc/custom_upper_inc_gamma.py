@@ -11,15 +11,41 @@ jax.config.update("jax_enable_x64", True) # NOTE: If comment this out, also upda
 jax.config.update("jax_disable_jit", True)
 
 
+# def s_zero(x: ArrayLike) -> Array:
+#     """Solution when s = 0."""
+
+#     # TODO: Move typing to custom_gammaincc if possible
+#     # Ensure x is a JAX double
+#     x = jnp.array(x, dtype=jnp.float64)
+
+#     return -expi(-x)
+
+# Temp patch to handle the JAX bug in expi()
 def s_zero(x: ArrayLike) -> Array:
     """Solution when s = 0."""
 
-    # TODO: Move typing to custom_gammaincc if possible
+    def handle_jax_bug(x):
+
+        jax.config.update("jax_disable_jit", False)
+        res = -expi(-x)
+        jax.config.update("jax_disable_jit", True)
+
+        return res
+
+    def dont_handle_jax_bug(x):
+
+        return -expi(-x)
+
     # Ensure x is a JAX double
     x = jnp.array(x, dtype=jnp.float64)
 
-    # TODO: handle JAX bug
-    return -expi(-x)
+    # Handle x (or not).
+    return lax.cond(
+        0 < x <= 1,
+        lambda _: handle_jax_bug(x),
+        lambda _: dont_handle_jax_bug(x),
+        operand=None
+    )
 
 def s_half(x):
     """Solution when s = 1/2."""
