@@ -74,31 +74,25 @@ def custom_gammaincc(s: ArrayLike, x: ArrayLike, depth) -> Array:
     Computes the upper incomplete gamma function Γ(s, x) for any real s and real x >= 0.
 
     For x = inf
-    - Returns 0.
+                        - Returns 0.
 
     For x = 0
-    - [s = 0]           - Return inf
+    - [s = 0]           - Returns inf
     - [s (int) < 0]     - Returns commplex inf.
     - [s (non-int) < 0] - Returns gamma(x).
     - [s > 0]           - Returns gamma(x).
 
     For x > 0
-    - [s = 0] - Returns -expi(-x)
-    - [s = 0.5] - jnp.sqrt(jnp.pi) * lax.erfc(jnp.sqrt(x))
-    - [s = 1] - Uses regularised lower incomplete gamma function for positive s.
-    - [s > 0] - Uses recurrence relation for all negative s, including negative integers.
-    - [s < 0] - Handles the special case of s = 0 correctly using the exponential integral.
-
-
-    - [s = 0] - Uses the regular gamma function for positive s and non-integer s < 0
-    - [s = 0.5] - Returns inf when s = 0 or integer s < 0.
-    - [s = 1] - Uses regularised lower incomplete gamma function for positive s.
-    - [s > 0] - Uses recurrence relation for all negative s, including negative integers.
-    - [s < 0] - Handles the special case of s = 0 correctly using the exponential integral.
+    - [s = 0]           - Returns -expi(-x)
+    - [s = 0.5]         - Returns jnp.sqrt(jnp.pi) * lax.erfc(jnp.sqrt(x))
+    - [s = 1]           - Returns jnp.exp(-x)
+    - [s > 0]           - Uses regularised lower incomplete gamma function.
+    - [s < 0]           - Uses recurrence relation for all negative s, including negative integers.
 
     Parameters:
     s (float): The shape parameter.
     x (float): The lower limit of integration.
+    d (int):   The depth of recursion: np.abs(np.floor(s)).astype(int)
 
     Returns:
     float: The computed value of Γ(s, x).
