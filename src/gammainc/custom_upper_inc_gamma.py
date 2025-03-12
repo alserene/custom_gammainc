@@ -34,7 +34,7 @@ def s_negative(s: ArrayLike, x: ArrayLike) -> Array:
         return (new_gamma, s - 1), new_gamma
     
     # Get recursion starting values
-    recur_depth = 4
+    recur_depth = 2
     s_start = s % 1.0
     # gamma_start = custom_gammaincc(s_start, x, recur_depth)
     gamma_start = s_positive(s_start, x)

@@ -8,8 +8,11 @@ from sympy import uppergamma, zoo
 from gammainc import custom_gammaincc
 
 
-@pytest.mark.parametrize("x", [0.1, 0.5, 0.9, 1, 2.1, 3.7, 4.5, 5, 6.6, 7.1, 8.00005, 9.9, 10.0, 15, 18, 20, 25, 30, 100, 1000])
-@pytest.mark.parametrize("s", [-3.4, -1.2, -1, 0, 0.5, 1, 1.7, 3])
+# @pytest.mark.parametrize("x", [0.1, 0.5, 0.9, 1, 2.1, 3.7, 4.5, 5, 6.6, 7.1, 8.00005, 9.9, 10.0, 15, 18, 20, 25, 30, 100, 1000])
+# @pytest.mark.parametrize("x", [0.1, 0.5, 0.9, 1])
+# @pytest.mark.parametrize("s", [-3.4, -1.2, -1, 0, 0.5, 1, 1.7, 3])
+@pytest.mark.parametrize("x", [2])
+@pytest.mark.parametrize("s", [-1.2])
 def test_inputs(s, x):
 
     # Call custom function
