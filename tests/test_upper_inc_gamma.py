@@ -40,7 +40,5 @@ def test_inputs(s, x):
 def test_grad():
     """Test that the custom gamma function can be autodifferentiated."""
 
-    jax.config.update("jax_disable_jit", True)
-
     grad_custom_gammaincc = jax.grad(custom_gammaincc)
     print(grad_custom_gammaincc(-1.2, 2.0))
