@@ -1,5 +1,3 @@
-from functools import partial
-
 import jax
 import jax.numpy as jnp
 from jax import jit, lax
@@ -23,7 +21,7 @@ def compute_gamma(s: ArrayLike, x: ArrayLike) -> Array:
     def compute_recurrence(carry, _):
         gamma, s = carry
 
-        # Handle case of JAX inf        
+        # Handle case of JAX inf
         new_gamma = lax.cond(
             jnp.isinf(gamma),
             lambda _: jnp.inf,
