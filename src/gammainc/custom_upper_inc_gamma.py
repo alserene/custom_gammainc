@@ -34,9 +34,8 @@ def s_negative(s: ArrayLike, x: ArrayLike) -> Array:
         return (new_gamma, s - 1), new_gamma
     
     # Get recursion starting values
-    recur_depth = 2
-    s_start = s % 1.0
-    # gamma_start = custom_gammaincc(s_start, x, recur_depth)
+    recur_depth = 3
+    s_start = s + 3
     gamma_start = s_positive(s_start, x)
     
     # Initiate recursion
@@ -77,45 +76,3 @@ def custom_gammaincc(s: ArrayLike, x: ArrayLike) -> Array:
     s, x = promote_args_inexact("custom_gammaincc", s, x)
 
     return s_negative(s, x)
-
-    # return lax.cond(
-    #     jnp.isinf(x), # x = inf
-    #     lambda _: 0,
-    #     lambda _: lax.cond(
-    #         x == 0, # x = 0 cases
-    #         lambda _: lax.cond(
-    #             s == 0, # s = 0
-    #             lambda _: jnp.inf,
-    #             lambda _: lax.cond(
-    #                 jnp.logical_and(s < 0, s == jnp.floor(s)), # s (int) < 0
-    #                 lambda _: lax.complex(jnp.inf, jnp.inf),
-    #                 lambda _: gamma(s), # s > 0 & s (non-int) < 0
-    #                 operand=None
-    #             ),
-    #             operand=None
-    #         ),
-    #         lambda _: lax.cond( # x > 0 cases
-    #             s == 0, # s = 0
-    #             lambda _: s_zero(x),
-    #             lambda _: lax.cond(
-    #                 s == 1/2, # s = 1/2
-    #                 lambda _: s_half(x),
-    #                 lambda _: lax.cond(
-    #                     s == 1, # s = 1
-    #                     lambda _: s_one(x),
-    #                     lambda _: lax.cond(
-    #                         s > 0, # s > 0
-    #                         lambda _: s_positive(s, x),
-    #                         lambda _: s_negative(s, x), # s < 0
-    #                         operand=None
-    #                     ),
-    #                     operand=None
-    #                 ),
-    #                 operand=None
-    #             ),
-    #             operand=None
-    #         ),
-    #         operand=None
-    #     ),
-    #     operand=None
-    # )
