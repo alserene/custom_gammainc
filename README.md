@@ -27,3 +27,32 @@ Parameters:
 
 Returns:
  - <code>float</code>: The computed value of <code>Γ(s, x)</code>.
+
+
+# Instructions
+
+### Package/dependency Manager
+To get the notebook running with custom_gammainc, I recommend you to use [Poetry](https://python-poetry.org/). Instructions for use are below. If you need help installing, let me know :)
+
+### Setup
+1. Clone code from GitHub
+2. Set up Poetry
+3. Checkout [recur_only](https://github.com/alserene/custom_gammainc/tree/recur_only) branch
+4. Run [tests](https://github.com/alserene/custom_gammainc/blob/recur_only/tests/test_upper_inc_gamma.py) to check all is as expected
+
+```
+git clone https://github.com/alserene/custom_gammainc.git
+cd custom_gammainc
+poetry install
+git checkout recur_only
+poetry build
+poetry run pytest tests/test_upper_inc_gamma.py
+```
+
+### Notebook
+To run the notebook, [schechter_fit_numpyro_jax.ipynb](https://github.com/alserene/custom_gammainc/blob/recur_only/src/gammainc/schechter_fit_numpyro_jax.ipynb), you will need to add data to the same folder or modify the data path (defintion at top of notebook).
+
+# Other
+If you want to add packages to poetry env:
+
+<code>poetry add \<package> </code>
