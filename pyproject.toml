@@ -10,12 +10,18 @@ requires-python = ">=3.11"
 dependencies = [
     "jax (>=0.5.2,<0.6.0)",
     "pytest (>=8.3.5,<9.0.0)",
-    "sympy (>=1.13.3,<2.0.0)"
+    "sympy (>=1.13.3,<2.0.0)",
+    "matplotlib (>=3.10.1,<4.0.0)",
+    "numpyro (>=0.18.0,<0.19.0)",
+    "astropy (>=7.0.1,<8.0.0)"
 ]
 
 [tool.poetry]
 packages = [{include = "gammainc", from = "src"}]
 
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
