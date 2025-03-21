@@ -32,8 +32,7 @@ Returns:
 # Instructions
 
 ### Package/dependency Manager
-To get the notebook running with custom_gammainc, I recommend you to use [Poetry](https://python-poetry.org/). Instructions for use are below. If you need help installing, let me know :)
-
+To get the notebook running with custom_gammainc, I recommend you to use [Poetry](https://python-poetry.org/). Instructions for use are below.
 ### Setup
 1. Clone code from GitHub
 ```
