@@ -1,7 +1,7 @@
 import jax
 import jax.numpy as jnp
 from jax import jit, lax
-from jax.scipy.special import gamma, gammaincc, expi
+from jax.scipy.special import gamma, gammaincc
 from jax._src.typing import Array, ArrayLike
 from jax._src.numpy.util import promote_args_inexact
 
