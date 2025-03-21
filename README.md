@@ -36,16 +36,24 @@ To get the notebook running with custom_gammainc, I recommend you to use [Poetry
 
 ### Setup
 1. Clone code from GitHub
-2. Set up Poetry
-3. Checkout [recur_only](https://github.com/alserene/custom_gammainc/tree/recur_only) branch
-4. Run [tests](https://github.com/alserene/custom_gammainc/blob/recur_only/tests/test_upper_inc_gamma.py) to check all is as expected
-
 ```
 git clone https://github.com/alserene/custom_gammainc.git
+```
+2. Set up Poetry
+```
 cd custom_gammainc
 poetry install
+```
+3. Checkout [recur_only](https://github.com/alserene/custom_gammainc/tree/recur_only) branch
+```
 git checkout recur_only
+```
+4. Build project
+```
 poetry build
+```
+6. Run [tests](https://github.com/alserene/custom_gammainc/blob/recur_only/tests/test_upper_inc_gamma.py) to check all is as expected
+```
 poetry run pytest tests/test_upper_inc_gamma.py
 ```
 
